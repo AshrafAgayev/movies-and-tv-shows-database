@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Movies MVVM</string>
+    <string name="most_popular">Most Popular</string>
+</resources>
