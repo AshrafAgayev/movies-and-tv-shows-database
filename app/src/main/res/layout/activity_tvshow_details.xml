@@ -9,7 +9,34 @@
             name="isLoading"
             type="Boolean" />
 
+        <variable
+            name="tvShowImageURL"
+            type="String" />
+
+        <variable
+            name="tvShowName"
+            type="String" />
+
+        <variable
+            name="networkCountry"
+            type="String" />
+        
+        <variable
+            name="status"
+            type="String" />
+        
+        <variable
+            name="startDate"
+            type="String" />
+
+        <variable
+            name="description"
+            type="String" />
+        
         <import type="android.view.View"/>
+        
+        
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -40,13 +67,147 @@
 
         <LinearLayout
             android:id="@+id/layoutSliderIndicators"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:gravity="end|center_vertical"
             android:orientation="horizontal"
             android:padding="@dimen/_8sdp"
             android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="@id/viewFadingEdge"/>
+            app:layout_constraintBottom_toBottomOf="@id/viewFadingEdge"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imageTvShow"/>
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/imageTvShow"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_150sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:imageURL="@{tvShowImageURL}"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="@id/sliderViewPager"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sliderViewPager"
+            app:riv_corner_radius="@dimen/_6sdp"
+            android:visibility="gone"/>
+        
+        <TextView
+            android:id="@+id/tvShowName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:ellipsize="end"
+            android:fontFamily="@font/ubuntu_bold"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="@{tvShowName}"
+            android:textColor="@color/colorTextIcons"
+            android:textSize="@dimen/_14sdp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/imageTvShow"
+            app:layout_constraintTop_toBottomOf="@id/sliderViewPager"/>
+
+        <TextView
+            android:id="@+id/textNetworkCountry"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:ellipsize="end"
+            android:fontFamily="@font/ubuntu_regular"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="@{networkCountry}"
+            android:textColor="@color/colorTextOther"
+            android:textSize="@dimen/_12sdp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@id/tvShowName"
+            app:layout_constraintStart_toEndOf="@id/tvShowName"
+            app:layout_constraintTop_toBottomOf="@id/tvShowName"/>
+
+
+        <TextView
+            android:id="@+id/textStatus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:ellipsize="end"
+            android:fontFamily="@font/ubuntu_regular"
+            android:includeFontPadding="false"
+            android:text="@{status}"
+            android:maxLines="1"
+            app:layout_constraintEnd_toEndOf="@id/tvShowName"
+            app:layout_constraintStart_toStartOf="@id/tvShowName"
+            app:layout_constraintTop_toBottomOf="@id/textNetworkCountry"/>
+
+        <TextView
+            android:id="@+id/textStarted"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:ellipsize="end"
+            android:fontFamily="@font/ubuntu_regular"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="@{startDate}"
+            app:layout_constraintEnd_toEndOf="@id/tvShowName"
+            app:layout_constraintStart_toStartOf="@id/tvShowName"
+            app:layout_constraintTop_toBottomOf="@id/textStatus"/>
+
+
+        <TextView
+            android:id="@+id/textDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:ellipsize="end"
+            android:fontFamily="@font/ubuntu_regular"
+            android:lineSpacingExtra="@dimen/_2sdp"
+            android:maxLines="4"
+            android:text="@{description}"
+            android:textColor="@color/colorTextIcons"
+            android:textSize="@dimen/_11sdp"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/imageTvShow"/>
+
+
+        <TextView
+            android:id="@+id/textReadMore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:fontFamily="@font/ubuntu_medium"
+            android:includeFontPadding="false"
+            android:text="@string/read_more"
+            android:textColor="?attr/colorSecondaryVariant"
+            android:textSize="@dimen/_12sdp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@id/textDescription"
+            app:layout_constraintTop_toBottomOf="@id/textDescription"
+           />
+
+
+
+
+
+        <ImageView
+            android:id="@+id/imageBack"
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/background_back_button"
+            android:contentDescription="@string/app_name"
+            android:padding="@dimen/_3sdp"
+            android:src="@drawable/ic_back"
+            app:tint="@color/colorTextIcons"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+
 
 
         <ProgressBar

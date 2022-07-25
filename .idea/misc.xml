@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ashra/AndroidStudioProjects/MoviesMVVM/app/src/main/res/drawable/background_back_button.xml" value="0.1145" />
         <entry key="..\:/Users/ashra/AndroidStudioProjects/MoviesMVVM/app/src/main/res/drawable/background_fading_edge.xml" value="0.1145" />
         <entry key="..\:/Users/ashra/AndroidStudioProjects/MoviesMVVM/app/src/main/res/drawable/background_slicer_indicator_active.xml" value="0.1145" />
         <entry key="..\:/Users/ashra/AndroidStudioProjects/MoviesMVVM/app/src/main/res/drawable/background_slicer_indicator_inactive.xml" value="0.1145" />
