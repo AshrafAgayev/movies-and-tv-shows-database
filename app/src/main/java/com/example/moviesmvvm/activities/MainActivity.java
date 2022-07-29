@@ -53,7 +53,6 @@ public class MainActivity extends AppCompatActivity implements TVShowsListener {
                     }
 
                 }
-
             }
         });
         getMostPopularTvShows();
@@ -84,22 +83,13 @@ public class MainActivity extends AppCompatActivity implements TVShowsListener {
             } else {
                 activityMainBinding.setIsLoadingMore(false);
             }
-
         }
-
-
     }
 
     @Override
     public void onTVShowClicked(TVShow tvShow) {
         Intent intent = new Intent(getApplicationContext(), TVShowDetailsActivity.class);
-        intent.putExtra("id", tvShow.getId());
-        intent.putExtra("name", tvShow.getName());
-        intent.putExtra("startDate", tvShow.getStartDate());
-        intent.putExtra("country", tvShow.getCountry());
-        intent.putExtra("network", tvShow.getNetwork());
-        intent.putExtra("status", tvShow.getStatus());
-        intent.putExtra("thumbnail", tvShow.getThumbnailPath());
+        intent.putExtra("tvShow", tvShow);
         startActivity(intent);
     }
 }

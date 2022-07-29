@@ -3,4 +3,7 @@
     <string name="most_popular">Most Popular</string>
     <string name="read_more">Read More</string>
     <string name="read_less">Read Less</string>
+    <string name="u2022">•</string>
+    <string name="episodes">Episodes</string>
+    <string name="website">Website</string>
 </resources>

@@ -7,7 +7,7 @@ import java.util.List;
 public class TVShowDetails {
 
     @SerializedName("url")
-    private String tvShowName;
+    private String url;
 
     @SerializedName("description")
     private String description;
@@ -31,8 +31,8 @@ public class TVShowDetails {
     private List<Episode> episodes;
 
 
-    public String getTvShowName() {
-        return tvShowName;
+    public String getUrl() {
+        return url;
     }
 
     public String getDescription() {

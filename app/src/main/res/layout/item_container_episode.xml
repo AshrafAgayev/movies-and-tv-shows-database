@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        
+        <variable
+            name="season"
+            type="String" />
+        
+        <variable
+            name="episode"
+            type="String" />
+        
+        <variable
+            name="name"
+            type="String" />
+        
+        <variable
+            name="airDate"
+            type="String" />
+        
+        <variable
+            name="duration"
+            type="String" />
+
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_tv_show"
+        android:layout_margin="@dimen/_8sdp">
+
+        <TextView
+            android:id="@+id/titleEpisode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorTextIcons"
+            android:textSize="@dimen/_12sdp"
+            android:text='@{"S"+season+"E"+episode}'
+            android:includeFontPadding="false"
+            android:fontFamily="@font/ubuntu_light"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_8sdp"/>
+
+
+        <TextView
+            android:id="@+id/nameEpisode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorTextIcons"
+            android:textSize="@dimen/_13sdp"
+            android:text='@{name}'
+            android:includeFontPadding="false"
+            android:fontFamily="@font/ubuntu_medium"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_8sdp"/>
+
+        <TextView
+            android:id="@+id/airDateEpisode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textSecondary"
+            android:textSize="@dimen/_12sdp"
+            android:text='@{"Air date: "+ airDate}'
+            android:includeFontPadding="false"
+            android:fontFamily="@font/ubuntu_medium"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:layout_marginBottom="@dimen/_5sdp"/>
+
+
+
+
+
+
+    </LinearLayout>
+</layout>

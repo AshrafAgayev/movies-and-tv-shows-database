@@ -5,10 +5,10 @@ import com.google.gson.annotations.SerializedName;
 public class Episode {
 
     @SerializedName("season")
-    private int season;
+    private String season;
 
     @SerializedName("episode")
-    private int episode;
+    private String episode;
 
     @SerializedName("name")
     private String episodeName;
@@ -16,11 +16,11 @@ public class Episode {
     @SerializedName("air_date")
     private String airDate;
 
-    public int getSeason() {
+    public String getSeason() {
         return season;
     }
 
-    public int getEpisode() {
+    public String getEpisode() {
         return episode;
     }
 
