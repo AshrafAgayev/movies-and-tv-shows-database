@@ -2,6 +2,7 @@ package com.example.moviesmvvm.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -53,6 +54,14 @@ public class MainActivity extends AppCompatActivity implements TVShowsListener {
                     }
 
                 }
+            }
+        });
+
+        Intent intent = new Intent(this, WatchlistActivity.class);
+        activityMainBinding.imageWatchList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(intent);
             }
         });
         getMostPopularTvShows();

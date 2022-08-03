@@ -5,17 +5,21 @@
       <map>
         <entry key="..\:/Users/ashra/AndroidStudioProjects/MoviesMVVM/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1785" />
         <entry key="..\:/Users/ashra/AndroidStudioProjects/MoviesMVVM/app/src/main/res/drawable/background_back_button.xml" value="0.1145" />
+        <entry key="..\:/Users/ashra/AndroidStudioProjects/MoviesMVVM/app/src/main/res/drawable/background_fab.xml" value="0.1785" />
         <entry key="..\:/Users/ashra/AndroidStudioProjects/MoviesMVVM/app/src/main/res/drawable/background_fading_edge.xml" value="0.1145" />
         <entry key="..\:/Users/ashra/AndroidStudioProjects/MoviesMVVM/app/src/main/res/drawable/background_slicer_indicator_active.xml" value="0.1145" />
         <entry key="..\:/Users/ashra/AndroidStudioProjects/MoviesMVVM/app/src/main/res/drawable/background_slicer_indicator_inactive.xml" value="0.1145" />
         <entry key="..\:/Users/ashra/AndroidStudioProjects/MoviesMVVM/app/src/main/res/drawable/background_tv_show.xml" value="0.1685" />
+        <entry key="..\:/Users/ashra/AndroidStudioProjects/MoviesMVVM/app/src/main/res/drawable/ic_added.xml" value="0.1385" />
         <entry key="..\:/Users/ashra/AndroidStudioProjects/MoviesMVVM/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.154" />
         <entry key="..\:/Users/ashra/AndroidStudioProjects/MoviesMVVM/app/src/main/res/drawable/ic_close.xml" value="0.1785" />
+        <entry key="..\:/Users/ashra/AndroidStudioProjects/MoviesMVVM/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1385" />
         <entry key="..\:/Users/ashra/AndroidStudioProjects/MoviesMVVM/app/src/main/res/drawable/ic_star.xml" value="0.1785" />
         <entry key="..\:/Users/ashra/AndroidStudioProjects/MoviesMVVM/app/src/main/res/drawable/ic_watchlist.xml" value="0.1145" />
         <entry key="..\:/Users/ashra/AndroidStudioProjects/MoviesMVVM/app/src/main/res/layout/activity_main.xml" value="0.18" />
         <entry key="..\:/Users/ashra/AndroidStudioProjects/MoviesMVVM/app/src/main/res/layout/activity_tvshow_details.xml" value="0.2" />
-        <entry key="..\:/Users/ashra/AndroidStudioProjects/MoviesMVVM/app/src/main/res/layout/item_container.xml" value="0.2073170731707317" />
+        <entry key="..\:/Users/ashra/AndroidStudioProjects/MoviesMVVM/app/src/main/res/layout/activity_watchlist.xml" value="0.25" />
+        <entry key="..\:/Users/ashra/AndroidStudioProjects/MoviesMVVM/app/src/main/res/layout/item_container.xml" value="0.22" />
         <entry key="..\:/Users/ashra/AndroidStudioProjects/MoviesMVVM/app/src/main/res/layout/item_container_episode.xml" value="0.3369447453954496" />
         <entry key="..\:/Users/ashra/AndroidStudioProjects/MoviesMVVM/app/src/main/res/layout/item_containter_slider_image.xml" value="0.1933876811594203" />
         <entry key="..\:/Users/ashra/AndroidStudioProjects/MoviesMVVM/app/src/main/res/layout/layout_episodes_bottom_sheet.xml" value="0.1203125" />

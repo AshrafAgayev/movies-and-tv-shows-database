@@ -1,5 +1,6 @@
 package com.example.moviesmvvm.activities;
 
+import androidx.annotation.MainThread;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.core.text.HtmlCompat;
@@ -19,6 +20,7 @@ import android.widget.ActionMenuView;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.moviesmvvm.R;
 import com.example.moviesmvvm.adapters.EpisodesAdapter;
@@ -32,6 +34,10 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.Locale;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.schedulers.Schedulers;
 
 public class TVShowDetailsActivity extends AppCompatActivity {
 
@@ -113,7 +119,6 @@ public class TVShowDetailsActivity extends AppCompatActivity {
                         activityTvshowDetailsBinding.layoutMisc.setVisibility(View.VISIBLE);
 
 
-
                         // Initializing Website button (redirects to url that came with api)
                         activityTvshowDetailsBinding.buttonWebsite.setOnClickListener(view -> {
                             Intent intent = new Intent(Intent.ACTION_VIEW);
@@ -122,7 +127,6 @@ public class TVShowDetailsActivity extends AppCompatActivity {
                         });
                         activityTvshowDetailsBinding.buttonWebsite.setVisibility(View.VISIBLE);
                         activityTvshowDetailsBinding.buttonEpisodes.setVisibility(View.VISIBLE);
-
 
 
                         // Initializing Episodes button
@@ -163,6 +167,19 @@ public class TVShowDetailsActivity extends AppCompatActivity {
                         });
                         //////
 
+
+                        //Watchlist button clicklistener
+                        activityTvshowDetailsBinding.imageWatchList.setOnClickListener(view ->
+                            new CompositeDisposable().add(tvShowDetailsViewModel.addToWatchlist(tvShow)
+                                    .subscribeOn(Schedulers.io())
+                                    .observeOn(AndroidSchedulers.mainThread())
+                                    .subscribe(() -> {
+                                        activityTvshowDetailsBinding.imageWatchList.setImageResource(R.drawable.ic_added);
+                                        Toast.makeText(getApplicationContext(), "Added to watchlist", Toast.LENGTH_SHORT).show();
+                                    })
+                            ));
+
+                        activityTvshowDetailsBinding.imageWatchList.setVisibility(View.VISIBLE);
 
                         loadBasicTVShowDetails();
                     }

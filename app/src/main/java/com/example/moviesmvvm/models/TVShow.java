@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-@Entity(tableName = "tvShow")
+@Entity(tableName = "tvShows")
 public class TVShow implements Serializable {
 
     @PrimaryKey

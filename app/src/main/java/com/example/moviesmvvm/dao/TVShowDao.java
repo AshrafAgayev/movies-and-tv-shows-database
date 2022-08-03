@@ -16,7 +16,8 @@ import io.reactivex.Flowable;
 
 @Dao
 public interface TVShowDao {
-    @Query("select * from tvShow")
+
+    @Query("SELECT * FROM tvShows")
     Flowable<List<TVShow>> getWatchList();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
