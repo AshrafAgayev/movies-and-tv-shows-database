@@ -13,6 +13,7 @@ import com.example.moviesmvvm.adapters.WatchlistAdapter;
 import com.example.moviesmvvm.databinding.ActivityWatchlistBinding;
 import com.example.moviesmvvm.listeners.WatchlistListener;
 import com.example.moviesmvvm.models.TVShow;
+import com.example.moviesmvvm.utilities.TempDataHolder;
 import com.example.moviesmvvm.viewmodels.WatchlistViewmodel;
 
 import java.util.ArrayList;
@@ -42,6 +43,7 @@ public class WatchlistActivity extends AppCompatActivity implements WatchlistLis
         viewmodel = new ViewModelProvider(this).get(WatchlistViewmodel.class);
         activityWatchlistBinding.imageBack.setOnClickListener(view -> onBackPressed());
         watchlist = new ArrayList<>();
+        loadWatchlist();
     }
 
     private void loadWatchlist(){
@@ -66,6 +68,10 @@ public class WatchlistActivity extends AppCompatActivity implements WatchlistLis
     @Override
     protected void onResume() {
         super.onResume();
+        if(TempDataHolder.IS_WATCHLIST_UPDATED){
+            loadWatchlist();
+            TempDataHolder.IS_WATCHLIST_UPDATED = false;
+        }
         loadWatchlist();
     }
 
@@ -79,6 +85,15 @@ public class WatchlistActivity extends AppCompatActivity implements WatchlistLis
 
     @Override
     public void removeTVShowFromWatchlist(TVShow tvShow, int position) {
-
+        CompositeDisposable compositeDisposable = new CompositeDisposable();
+        compositeDisposable.add(viewmodel.removeTVShowFromWatchlist(tvShow)
+                .subscribeOn(Schedulers.computation())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(()-> {
+                    watchlist.remove(position);
+                    watchlistAdapter.notifyItemRemoved(position);
+                    watchlistAdapter.notifyItemRangeChanged(position, watchlistAdapter.getItemCount());
+                    compositeDisposable.dispose();
+                }));
     }
 }

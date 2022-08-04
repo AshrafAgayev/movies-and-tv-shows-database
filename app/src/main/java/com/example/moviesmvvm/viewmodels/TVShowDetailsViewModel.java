@@ -12,6 +12,8 @@ import com.example.moviesmvvm.repositories.TVShowDetailsRepository;
 import com.example.moviesmvvm.responses.TVShowDetailsResponse;
 
 import io.reactivex.Completable;
+import io.reactivex.Flowable;
+import kotlinx.coroutines.flow.Flow;
 
 public class TVShowDetailsViewModel extends AndroidViewModel {
 
@@ -30,6 +32,14 @@ public class TVShowDetailsViewModel extends AndroidViewModel {
 
     public Completable addToWatchlist(TVShow tvShow){
         return tvShowDatabase.tvShowDao().addToWatchList(tvShow);
+    }
+
+    public Flowable<TVShow> getTVShowFromWatchlist(String tvShowId){
+        return tvShowDatabase.tvShowDao().getTVShowFromWatchlist(tvShowId);
+    }
+
+    public Completable removeFromWatchlist(TVShow tvShow){
+        return tvShowDatabase.tvShowDao().removeFromWatchlist(tvShow);
     }
 
 }

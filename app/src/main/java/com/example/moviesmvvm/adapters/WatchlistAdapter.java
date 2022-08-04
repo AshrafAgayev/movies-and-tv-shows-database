@@ -17,12 +17,11 @@ import com.example.moviesmvvm.models.TVShow;
 
 import java.util.List;
 
-public class WatchlistAdapter extends RecyclerView.Adapter<WatchlistAdapter.TvShowViewHolder>{
+public class WatchlistAdapter extends RecyclerView.Adapter<WatchlistAdapter.TvShowViewHolder> {
 
     private List<TVShow> tvshows;
     private LayoutInflater layoutInflater;
     private WatchlistListener watchlistListener;
-
 
 
     public WatchlistAdapter(List<TVShow> tvshows, WatchlistListener watchlistListener) {
@@ -34,7 +33,7 @@ public class WatchlistAdapter extends RecyclerView.Adapter<WatchlistAdapter.TvSh
     @NonNull
     @Override
     public TvShowViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        if(layoutInflater == null){
+        if (layoutInflater == null) {
             layoutInflater = LayoutInflater.from(parent.getContext());
         }
 
@@ -52,24 +51,25 @@ public class WatchlistAdapter extends RecyclerView.Adapter<WatchlistAdapter.TvSh
 
     @Override
     public int getItemCount() {
-        return  tvshows.size();
+        return tvshows.size();
     }
 
 
-    class TvShowViewHolder extends RecyclerView.ViewHolder{
+    class TvShowViewHolder extends RecyclerView.ViewHolder {
 
         private final ItemContainerBinding itemContainerTvShowBinding;
 
-        public TvShowViewHolder(ItemContainerBinding itemContainerTvShowBinding){
+        public TvShowViewHolder(ItemContainerBinding itemContainerTvShowBinding) {
             super(itemContainerTvShowBinding.getRoot());
             this.itemContainerTvShowBinding = itemContainerTvShowBinding;
         }
 
-        public void bindTVShow(TVShow tvshow){
-            itemContainerTvShowBinding.setTvShow(tvshow);
+        public void bindTVShow(TVShow tvshow) {
             itemContainerTvShowBinding.executePendingBindings();
+
+            itemContainerTvShowBinding.setTvShow(tvshow);
             itemContainerTvShowBinding.getRoot().setOnClickListener(view -> watchlistListener.onTVShowClicked(tvshow));
-            itemContainerTvShowBinding.imageDeleteWatchlist.setOnClickListener(view -> watchlistListener.removeTVShowFromWatchlist(tvshow,getAdapterPosition()));
+            itemContainerTvShowBinding.imageDeleteWatchlist.setOnClickListener(view -> watchlistListener.removeTVShowFromWatchlist(tvshow, getAdapterPosition()));
             itemContainerTvShowBinding.imageDeleteWatchlist.setVisibility(VISIBLE);
         }
     }
