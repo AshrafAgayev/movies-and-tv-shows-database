@@ -1,6 +1,5 @@
 package com.example.moviesmvvm.activities;
 
-import androidx.annotation.MainThread;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.core.text.HtmlCompat;
@@ -26,7 +25,6 @@ import com.example.moviesmvvm.R;
 import com.example.moviesmvvm.adapters.EpisodesAdapter;
 import com.example.moviesmvvm.adapters.ImageSliderAdapter;
 
-import com.example.moviesmvvm.databinding.ItemContainerEpisodeBinding;
 import com.example.moviesmvvm.databinding.LayoutEpisodesBottomSheetBinding;
 import com.example.moviesmvvm.models.TVShow;
 import com.example.moviesmvvm.utilities.TempDataHolder;

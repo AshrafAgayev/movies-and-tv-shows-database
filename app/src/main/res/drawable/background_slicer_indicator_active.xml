@@ -4,8 +4,7 @@
 
     <size
         android:width="@dimen/_4sdp"
-        android:height="@dimen/_4sdp"
-        />
+        android:height="@dimen/_4sdp" />
     <solid android:color="@color/colorTextOther"/>
 
 </shape>

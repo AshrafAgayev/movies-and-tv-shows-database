@@ -14,8 +14,10 @@ import java.util.List;
 import io.reactivex.Completable;
 import io.reactivex.Flowable;
 
+
 @Dao
 public interface TVShowDao {
+
 
     @Query("SELECT * FROM tvShows")
     Flowable<List<TVShow>> getWatchList();
@@ -24,5 +26,8 @@ public interface TVShowDao {
     Completable addToWatchList(TVShow tvShow);
 
     @Delete
-    void removeFromWatchlist(TVShow tvShow);
+    Completable removeFromWatchlist(TVShow tvShow);
+
+    @Query("SELECT * FROM tvShows WHERE id = :tvShowId")
+    Flowable<TVShow> getTVShowFromWatchlist(String tvShowId);
 }

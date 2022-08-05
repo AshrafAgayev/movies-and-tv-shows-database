@@ -1,12 +1,15 @@
 package com.example.moviesmvvm.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.MainThread;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
@@ -58,12 +61,9 @@ public class MainActivity extends AppCompatActivity implements TVShowsListener {
         });
 
         Intent intent = new Intent(this, WatchlistActivity.class);
-        activityMainBinding.imageWatchList.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(intent);
-            }
-        });
+        activityMainBinding.imageWatchList.setOnClickListener(view -> startActivity(intent));
+
+        activityMainBinding.imageSearch.setOnClickListener(view -> startActivity(new Intent(getApplicationContext(), com.example.moviesmvvm.activities.SearchActivity.class)));
         getMostPopularTvShows();
     }
 
@@ -84,13 +84,18 @@ public class MainActivity extends AppCompatActivity implements TVShowsListener {
     }
 
     private void toggleLoading() {
-        if (currentPage == 1) {
-            activityMainBinding.setIsLoading(activityMainBinding.getIsLoading() == null || !activityMainBinding.getIsLoading());
+        if (currentPage == 1 || currentPage ==2) {
+            if(activityMainBinding.getIsLoading() != null && activityMainBinding.getIsLoading()){
+                activityMainBinding.setIsLoading(false);
+            }else{
+                activityMainBinding.setIsLoading(true);
+            }
+
         } else {
             if (activityMainBinding.getIsLoadingMore() != null && activityMainBinding.getIsLoadingMore()) {
-                activityMainBinding.setIsLoadingMore(true);
-            } else {
                 activityMainBinding.setIsLoadingMore(false);
+            } else {
+                activityMainBinding.setIsLoadingMore(true);
             }
         }
     }
