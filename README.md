@@ -11,11 +11,11 @@
   
   
 #### Used technologies:
-Java, Retrofit2, Room database
+Java, Retrofit2, Room database, RxJava, MVVM architecture
 
-## Some screenshots
+## Screenshots
 
-<img src="https://i.hizliresim.com/9epzkq7.jpg" width = "300" height = "600"/> <img src="https://i.hizliresim.com/pmz2o02.jpg" width = "300" height = "600"/> <img src="https://i.hizliresim.com/sgux6us.jpg" width = "300" height = "600"/> <img src="https://i.hizliresim.com/zjay8dv.jpg" width = "300" height = "600"/> <img src="https://i.hizliresim.com/lbxzsox.jpg" width = "300" height = "600"/> 
+<img src="https://i.hizliresim.com/9epzkq7.jpg" width = "240" height = "500"/> <img src="https://i.hizliresim.com/pmz2o02.jpg" width = "240" height = "500"/> <img src="https://i.hizliresim.com/sgux6us.jpg" width = "240" height = "500"/> <img src="https://i.hizliresim.com/zjay8dv.jpg" width = "240" height = "500"/> <img src="https://i.hizliresim.com/lbxzsox.jpg" width = "240" height = "500"/> 
 
 
 
