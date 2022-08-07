@@ -174,6 +174,8 @@ public class TVShowDetailsActivity extends AppCompatActivity {
                                 }
 
                                 episodesBottomSheetDialog.show();
+                            } else {
+                                episodesBottomSheetDialog.show();
                             }
 
                         });
@@ -191,11 +193,10 @@ public class TVShowDetailsActivity extends AppCompatActivity {
                                         .observeOn(AndroidSchedulers.mainThread())
                                         .subscribe(() -> {
                                                     isTvShowAvailableInWatchlist = false;
-                                            TempDataHolder.IS_WATCHLIST_UPDATED = true;
+                                                    TempDataHolder.IS_WATCHLIST_UPDATED = true;
                                                     activityTvshowDetailsBinding.imageWatchList.setImageResource(R.drawable.ic_watchlist);
-                                            Snackbar.make(activityTvshowDetailsBinding.detailsView,"Removed from watchlist", Snackbar.LENGTH_SHORT)
-                                                    .show();
-                                                  //  Toast.makeText(getApplicationContext(), "Removed from watchlist", Toast.LENGTH_SHORT).show();
+                                                    Snackbar.make(activityTvshowDetailsBinding.detailsView, "Removed from watchlist", Snackbar.LENGTH_SHORT)
+                                                            .show();
                                                     compositeDisposable.dispose();
                                                 }
                                         ));
@@ -204,16 +205,15 @@ public class TVShowDetailsActivity extends AppCompatActivity {
                                         .subscribeOn(Schedulers.io())
                                         .observeOn(AndroidSchedulers.mainThread())
                                         .subscribe(() -> {
-                                            TempDataHolder.IS_WATCHLIST_UPDATED = true;
-                                            activityTvshowDetailsBinding.imageWatchList.setImageResource(R.drawable.ic_added);
-                                            Snackbar.make(activityTvshowDetailsBinding.detailsView,"Added to watchlist", Snackbar.LENGTH_SHORT)
-                                                    .show();
-                                        //    Toast.makeText(getApplicationContext(), "Added to watchlist", Toast.LENGTH_SHORT).show();
-                                            compositeDisposable.dispose();
-                                        }));
+                                                    TempDataHolder.IS_WATCHLIST_UPDATED = true;
+                                                    activityTvshowDetailsBinding.imageWatchList.setImageResource(R.drawable.ic_added);
+                                                    Snackbar.make(activityTvshowDetailsBinding.detailsView, "Added to watchlist", Snackbar.LENGTH_SHORT)
+                                                            .show();
+                                                    compositeDisposable.dispose();
+                                                }
+                                        ));
                             }
                         });
-
 
                         activityTvshowDetailsBinding.imageWatchList.setVisibility(View.VISIBLE);
 

@@ -51,6 +51,7 @@ public class SearchActivity extends AppCompatActivity implements TVShowsListener
         searchBinding.imageBack.setOnClickListener(view -> onBackPressed());
         searchBinding.tvShowsRecyclerView.setHasFixedSize(true);
         searchViewModel = new ViewModelProvider(this).get(SearchViewModel.class);
+
         tvShowsAdapter = new TVShowsAdapter(tvShowList, this);
         searchBinding.tvShowsRecyclerView.setAdapter(tvShowsAdapter);
 
@@ -58,7 +59,6 @@ public class SearchActivity extends AppCompatActivity implements TVShowsListener
         searchBinding.inputSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
             }
 
             @Override
@@ -70,23 +70,35 @@ public class SearchActivity extends AppCompatActivity implements TVShowsListener
 
             @Override
             public void afterTextChanged(Editable editable) {
-                if (!editable.toString().trim().isEmpty()) {
-                    timer = new Timer();
-                    timer.schedule(new TimerTask() {
-                        @Override
-                        public void run() {
-                            currentPage = 1;
-                            Handler handler = new Handler(Looper.getMainLooper());
-                            handler.post(new Runnable() {
-                                public void run() {
-                                    searchTVShow(editable.toString());
-                                }
-                            });
-                        }
-                    }, 800);  //yazini yazdiqdan 800 millisaniye sonra sorgu gedir
-                } else {
-                    tvShowList.clear();
+                try{
+                    if (!editable.toString().trim().isEmpty()) {
+                        timer = new Timer();
+                        timer.schedule(new TimerTask() {
+                            @Override
+                            public void run() {
+                                currentPage = 1;
+                                tvShowList.clear();
+                                Handler handler = new Handler(Looper.getMainLooper());
+                                handler.post(new Runnable() {
+                                    public void run() {
+                                        searchTVShow(editable.toString());
+                                    }
+                                });
+                            }
+                        }, 800);  //yazini yazdiqdan 800 millisaniye sonra sorgu gedir
+                    }else{
+                        timer =new Timer();
+                        timer.schedule(new TimerTask() {
+                            @Override
+                            public void run() {
+                                tvShowList.clear();
+                            }
+                        }, 1000);
+                    }
+                }catch (Exception e){
+                    Toast.makeText(getApplicationContext(), "Exception" + e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
+
             }
         });
 
@@ -110,19 +122,31 @@ public class SearchActivity extends AppCompatActivity implements TVShowsListener
     }
 
     private void searchTVShow(String query) {
-        toggleLoading();
-        searchViewModel.searchTVShow(query, currentPage).observe(this, tvShowResponse -> {
+
+        try{
             toggleLoading();
-            if (tvShowResponse != null) {
-                if (tvShowResponse.getTvShows().size() !=0) {
-                    int oldCount = tvShowList.size();
-                    tvShowList.addAll(tvShowResponse.getTvShows());
-                    tvShowsAdapter.notifyItemRangeInserted(oldCount, tvShowList.size());
-                } else {
-                    Toast.makeText(this, "No results found", Toast.LENGTH_SHORT).show();
+            searchViewModel.searchTVShow(query, currentPage).observe(this, tvShowResponse -> {
+                toggleLoading();
+                if (tvShowResponse != null) {
+                    if (tvShowResponse.getTvShows().size() !=0) {
+                        int oldCount = tvShowList.size();
+
+
+                        tvShowList.addAll(tvShowResponse.getTvShows());
+                        totalAvailablePages = tvShowResponse.getTotal();
+
+                        Toast.makeText(getApplicationContext(), currentPage+" "+totalAvailablePages, Toast.LENGTH_SHORT).show();
+                        tvShowsAdapter.notifyItemRangeInserted(oldCount, tvShowList.size());
+
+                    } else {
+                        Toast.makeText(this, "No results found", Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
-        });
+            });
+        }catch(Exception e){
+            Toast.makeText(this, "Exception" + e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     private void toggleLoading() {
