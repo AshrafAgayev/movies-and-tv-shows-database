@@ -2,7 +2,6 @@ package com.example.moviesmvvm.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.BindingAdapter;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,7 +12,6 @@ import android.os.Handler;
 import android.os.Looper;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.View;
 import android.widget.Toast;
 
 import com.example.moviesmvvm.R;
@@ -22,7 +20,6 @@ import com.example.moviesmvvm.databinding.ActivitySearchBinding;
 import com.example.moviesmvvm.listeners.TVShowsListener;
 import com.example.moviesmvvm.models.TVShow;
 import com.example.moviesmvvm.viewmodels.SearchViewModel;
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -77,7 +74,6 @@ public class SearchActivity extends AppCompatActivity implements TVShowsListener
                             @Override
                             public void run() {
                                 currentPage = 1;
-                                tvShowList.clear();
                                 Handler handler = new Handler(Looper.getMainLooper());
                                 handler.post(new Runnable() {
                                     public void run() {
@@ -87,13 +83,8 @@ public class SearchActivity extends AppCompatActivity implements TVShowsListener
                             }
                         }, 800);  //yazini yazdiqdan 800 millisaniye sonra sorgu gedir
                     }else{
-                        timer =new Timer();
-                        timer.schedule(new TimerTask() {
-                            @Override
-                            public void run() {
-                                tvShowList.clear();
-                            }
-                        }, 1000);
+                      tvShowList.clear();
+                      tvShowsAdapter.notifyDataSetChanged();
                     }
                 }catch (Exception e){
                     Toast.makeText(getApplicationContext(), "Exception" + e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -129,11 +120,18 @@ public class SearchActivity extends AppCompatActivity implements TVShowsListener
                 toggleLoading();
                 if (tvShowResponse != null) {
                     if (tvShowResponse.getTvShows().size() !=0) {
-                        int oldCount = tvShowList.size();
 
+                        int oldCount;
+                        if(currentPage == 1){
+                            tvShowList.clear();
+                            tvShowsAdapter.notifyDataSetChanged();
+                            oldCount=tvShowList.size();
+                        }else {
+                         oldCount =tvShowList.size();
+                        }
 
                         tvShowList.addAll(tvShowResponse.getTvShows());
-                        totalAvailablePages = tvShowResponse.getTotal();
+                        totalAvailablePages = tvShowResponse.getPages();
 
                         Toast.makeText(getApplicationContext(), currentPage+" "+totalAvailablePages, Toast.LENGTH_SHORT).show();
                         tvShowsAdapter.notifyItemRangeInserted(oldCount, tvShowList.size());
